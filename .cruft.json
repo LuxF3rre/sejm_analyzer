@@ -1,0 +1,15 @@
+{
+  "template": "https://github.com/LuxF3rre/cookiecutter_python",
+  "commit": "d0d68109dbd7b5eb79a4841024ff9d7f2ba2aabb",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "project_name": "sejm_analyzer",
+      "project_description": "",
+      "project_slug": "sejm_analyzer",
+      "_template": "https://github.com/LuxF3rre/cookiecutter_python",
+      "_commit": "d0d68109dbd7b5eb79a4841024ff9d7f2ba2aabb"
+    }
+  },
+  "directory": null
+}

@@ -1,0 +1,127 @@
+[project]
+name = "sejm_analyzer"
+version = "0.1.0"
+description = ""
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = []
+
+[tool.black]
+target-version = ["py312"]
+line-length = 80
+skip-string-normalization = true
+
+[tool.ruff]
+target-version = "py312"
+line-length = 80
+lint.select = [
+    "A",
+    "ARG",
+    "B",
+    "C",
+    "DTZ",
+    "E",
+    "EM",
+    "F",
+    "FBT",
+    "I",
+    "ICN",
+    "ISC",
+    "N",
+    "PLC",
+    "PLE",
+    "PLR",
+    "PLW",
+    "PT",
+    "Q",
+    "RUF",
+    "S",
+    "T",
+    "TID",
+    "UP",
+    "W",
+    "YTT",
+]
+lint.ignore = [
+    # Allow non-abstract empty methods in abstract base classes
+    "B027",
+    # Allow boolean positional values in function calls, like dict.get(... True)
+    "FBT003",
+    # Ignore checks for possible passwords
+    "S105",
+    "S106",
+    "S107",
+    # Ignore complexity
+    "C901",
+    "PLR0911",
+    "PLR0912",
+    "PLR0913",
+    "PLR0915",
+    "D211",    # no-blank-line-before-class
+    "D213",    # multi-line-summary-second-line
+    "ISC001"   # single-line-implicit-string-concatenation
+    ]
+lint.unfixable = [
+    # Don't touch unused imports
+    "F401",
+]
+
+[tool.ruff.lint.isort]
+known-first-party = [
+    "sejm_analyzer"
+]
+
+[tool.ruff.lint.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+[tool.ruff.lint.per-file-ignores]
+# Tests can use magic values, assertions, and relative imports
+"tests/**/*" = ["PLR2004", "S101", "TID252"]
+
+[tool.pytest.ini_options]
+pythonpath = "src"
+
+[tool.mypy]
+plugins = []
+strict = true
+show_error_codes = true
+warn_unreachable = true
+disallow_any_unimported = true
+no_implicit_optional = true
+
+# Covered by strict = true
+# disallow_untyped_defs = true
+# check_untyped_defs = true
+# warn_return_any = true
+# warn_unused_ignores = true
+# warn_redundant_casts = true
+# no_implicit_reexport = true
+# disallow_any_generics = true
+
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
+
+[tool.coverage.paths]
+source = ["src", "*/site-packages"]
+
+[tool.coverage.run]
+branch = true
+source = ["sejm_analyzer"]
+
+[tool.coverage.report]
+show_missing = true
+
+[tool.ty.environment]
+python = "./.devenv/state/venv"
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+tag_format = "v$version"
+version_scheme = "semver2"
+version_provider = "uv"
+update_changelog_on_bump = true
